@@ -2,7 +2,8 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    server_name _ bloodscriptengine.tech www.bloodscriptengine.tech;
+    server_name _;
+
 
     root /var/www/bloodscriptengine;
     index index.html;
