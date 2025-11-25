@@ -16,7 +16,7 @@ server {
         include /etc/nginx/proxy_params;
     }
 
-    location /login {
+    location = /login {
         proxy_pass http://127.0.0.1:5000/login;
         include /etc/nginx/proxy_params;
     }
