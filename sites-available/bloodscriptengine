@@ -1,5 +1,6 @@
 server {
-    server_name bloodscriptengine.tech www.bloodscriptengine.tech;
+    server_name _ bloodscriptengine.tech www.bloodscriptengine.tech;
+
 
     # Static website root – this already matches your live setup
     root /var/www/bloodscriptengine;
