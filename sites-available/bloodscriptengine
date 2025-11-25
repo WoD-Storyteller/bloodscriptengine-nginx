@@ -1,29 +1,26 @@
 server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
     server_name _ bloodscriptengine.tech www.bloodscriptengine.tech;
 
-
-    # Static website root – this already matches your live setup
     root /var/www/bloodscriptengine;
     index index.html;
 
-    # Serve static files and fall back to index.html (fixes white screens)
     location / {
         try_files $uri $uri/ /index.html;
     }
 
-    # Backend dashboard API
     location /dashboard/ {
         proxy_pass http://127.0.0.1:5000/dashboard/;
         include /etc/nginx/proxy_params;
     }
 
-    # Backend login endpoint (API, not HTML)
     location /login {
         proxy_pass http://127.0.0.1:5000/login;
         include /etc/nginx/proxy_params;
     }
 
-    # OAuth endpoints for auth flow
     location /oauth/ {
         proxy_pass http://127.0.0.1:5000/oauth/;
         include /etc/nginx/proxy_params;
