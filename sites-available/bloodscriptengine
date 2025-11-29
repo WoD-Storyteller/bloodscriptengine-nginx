@@ -17,13 +17,14 @@ server {
         include /etc/nginx/proxy_params;
     }
 
-    location = /login {
-        proxy_pass http://127.0.0.1:5000/login;
-        include /etc/nginx/proxy_params;
-    }
+    # Discord login redirects handled by backend
+location /login {
+    proxy_pass http://127.0.0.1:5000/auth/login;
+    include /etc/nginx/proxy_params;
+}
 
-    location /oauth/ {
-        proxy_pass http://127.0.0.1:5000/oauth/;
-        include /etc/nginx/proxy_params;
-    }
+# OAuth callback
+location /oauth/ {
+    proxy_pass http://127.0.0.1:5000/oauth/;
+    include /etc/nginx/proxy_params;
 }
